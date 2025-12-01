@@ -2,23 +2,38 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Currículum – Aaron Soria</title>
+
   <style>
     :root{
-      --bg:#f6f8fb; --card:#ffffff; --accent:#2b7a78; --muted:#6b7280; --accent-2:#4fb0c6;
+      --bg:#f6f8fb; 
+      --card:#ffffff; 
+      --accent:#2b7a78; 
+      --muted:#6b7280; 
+      --accent-2:#4fb0c6;
       --maxw:900px;
       font-family: Inter, Roboto, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
       font-size:13px;
     }
-    *{box-sizing:border-box}
+
+    *{ box-sizing:border-box; }
+
     body{
       background:linear-gradient(180deg, var(--bg), #eef3f5);
-      color:#0f172a; margin:0; padding:32px 16px;
-      display:flex; justify-content:center;
+      color:#0f172a;
+      margin:0;
+      padding:32px 16px;
+      display:flex;
+      justify-content:center;
+      font-size:13px;
     }
 
-    .container{width:100%; max-width:var(--maxw);}
+    .container{
+      width:100%;
+      max-width:var(--maxw);
+    }
+
     .card{
       background:var(--card);
       border-radius:12px;
@@ -31,70 +46,102 @@
     header{
       padding:28px 28px 0 28px;
       border-bottom:1px solid #eef2f7;
-      display:flex; gap:16px; align-items:center
+      display:flex;
+      gap:16px;
+      align-items:center;
     }
 
     .photo{
-      width:84px; height:84px; border-radius:12px;
+      width:84px; 
+      height:84px;
+      border-radius:12px;
       background:#ddd;
-      display:flex; align-items:center; justify-content:center;
       overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
 
-    .head-info{padding-top:6px}
-    h1{margin:0; font-size:20px}
-    .title{margin:6px 0 0 0; color:var(--muted); font-size:13px}
-    .stack{margin-top:8px; font-size:13px; color:#0f172a}
+    .head-info{ padding-top:6px; }
+    h1{ margin:0; font-size:20px; }
+    .title{ margin:6px 0 0 0; color:var(--muted); font-size:13px; }
+    .stack{ margin-top:8px; font-size:13px; color:#0f172a; }
 
-    .sidebar{padding:20px 20px 28px 28px; background:#fafcfd}
-    .section{margin-bottom:18px}
+    .sidebar{
+      padding:20px 20px 28px 28px;
+      background:#fafcfd;
+    }
+
+    .section{ margin-bottom:18px; }
     .section h3{
-      font-size:13px; margin:0 0 8px 0;
-      color:var(--muted); text-transform:uppercase; letter-spacing:0.06em
+      font-size:13px;
+      margin:0 0 8px 0;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.06em;
     }
+
     .pill{
-      display:inline-block; background:rgba(43,122,120,0.12);
-      color:var(--accent); padding:4px 6px;
-      border-radius:6px; font-size:11px;
-      margin:3px 4px 0 0
+      display:inline-block;
+      background:rgba(43,122,120,0.12);
+      color:var(--accent);
+      padding:4px 6px;
+      border-radius:6px;
+      font-size:11px;
+      margin:3px 4px 0 0;
     }
 
-    .content{padding:20px 28px}
-    .row{display:flex; gap:8px; align-items:flex-start}
-    .role{font-weight:700}
-    .period{color:var(--muted)}
-    .bl{margin-bottom:12px}
-    .list{margin:8px 0 0 0; padding-left:18px}
-    .skills{display:flex; flex-wrap:wrap; gap:8px}
+    .content{
+      padding:20px 28px;
+    }
 
-    /* English hidden initially */
-    .en{display:none;}
+    .row{ display:flex; gap:8px; align-items:flex-start; }
+    .role{ font-weight:700; }
+    .period{ color:var(--muted); }
+    .bl{ margin-bottom:12px; }
+    .list{ margin:8px 0 0 0; padding-left:18px; }
+    .skills{ display:flex; flex-wrap:wrap; gap:8px; }
+
+    /* ONLY show Spanish by default */
+    .en{ display:none !important; }
+    .es{ display:block !important; }
 
     @media (max-width:800px){
-      .card{grid-template-columns:1fr;}
-      .sidebar{order:2}
-      header{grid-column:1/-1}
+      .card{ grid-template-columns:1fr; }
+      .sidebar{ order:2; }
+      header{ grid-column:1/-1; }
     }
 
     .lang-btns{
-      position:fixed; top:20px; left:20px;
-      display:flex; gap:8px; z-index:999;
+      position:fixed;
+      top:20px;
+      left:20px;
+      display:flex;
+      gap:8px;
+      z-index:999;
     }
+
     .lang-btns button{
-      padding:6px 12px; border:none;
-      border-radius:6px; cursor:pointer;
-      background:var(--accent); color:white; font-size:12px;
+      padding:6px 12px;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      background:var(--accent);
+      color:white;
+      font-size:12px;
     }
   </style>
 </head>
 
 <body>
 
+<!-- LANGUAGE SWITCHER -->
 <div class="lang-btns">
   <button onclick="setLang('es')">ES</button>
   <button onclick="setLang('en')">EN</button>
 </div>
 
+<!-- DOWNLOAD PDF BUTTON -->
 <button id="downloadBtn"
   style="position:fixed; top:20px; right:20px; padding:10px 16px;
          background:#2b7a78; color:white; border:none; border-radius:8px;
@@ -113,6 +160,8 @@
         </div>
 
         <div class="head-info">
+
+          <!-- SPANISH -->
           <h1 class="es">Aaron Soria</h1>
           <div class="title es">
             Estudiante de Computación Cuántica · Máster en Ciencias Computacionales y Matemática · Ingeniero en Informática
@@ -121,6 +170,7 @@
             Sr. Software Engineer & Fullstack Developer · .NET · Go · Vue.js · Flutter
           </div>
 
+          <!-- ENGLISH -->
           <h1 class="en">Aaron Soria</h1>
           <div class="title en">
             Quantum Computing Student · MSc Computational Sciences & Mathematics · Informatics Engineer
@@ -128,6 +178,7 @@
           <div class="stack en">
             Sr. Software Engineer & Fullstack Developer · .NET · Go · Vue.js · Flutter
           </div>
+
         </div>
       </header>
     </div>
@@ -145,6 +196,7 @@
       <div class="section">
         <h3 class="es">Habilidades</h3>
         <h3 class="en">Skills</h3>
+
         <div class="skills">
           <span class="pill">Go</span>
           <span class="pill">C# / .NET</span>
@@ -163,13 +215,35 @@
         <h3 class="es">Educación</h3>
         <h3 class="en">Education</h3>
 
-        <div class="es"><strong>UNIR</strong><br/><small>Máster en Computación Cuántica (2025–2026)</small></div>
-        <div class="es" style="margin-top:8px"><strong>UOC</strong><br/><small>Máster en Ciencias Computacionales y Matemática (2022–2024)</small></div>
-        <div class="es" style="margin-top:8px"><strong>Universidad Católica de Salta</strong><br/><small>Ingeniero en Informática (2014–2019)</small></div>
+        <div class="es">
+          <strong>UNIR</strong><br/>
+          <small>Máster en Computación Cuántica (2025–2026)</small>
+        </div>
 
-        <div class="en"><strong>UNIR</strong><br/><small>Master in Quantum Computing (2025–2026)</small></div>
-        <div class="en" style="margin-top:8px"><strong>UOC</strong><br/><small>Master in Computational Sciences & Mathematics (2022–2024)</small></div>
-        <div class="en" style="margin-top:8px"><strong>Universidad Católica de Salta</strong><br/><small>Bachelor in Informatics Engineering (2014–2019)</small></div>
+        <div class="es" style="margin-top:8px">
+          <strong>UOC</strong><br/>
+          <small>Máster en Ciencias Computacionales y Matemática (2022–2024)</small>
+        </div>
+
+        <div class="es" style="margin-top:8px">
+          <strong>Universidad Católica de Salta</strong><br/>
+          <small>Ingeniero en Informática (2014–2019)</small>
+        </div>
+
+        <div class="en">
+          <strong>UNIR</strong><br/>
+          <small>Master in Quantum Computing (2025–2026)</small>
+        </div>
+
+        <div class="en" style="margin-top:8px">
+          <strong>UOC</strong><br/>
+          <small>Master in Computational Sciences & Mathematics (2022–2024)</small>
+        </div>
+
+        <div class="en" style="margin-top:8px">
+          <strong>Universidad Católica de Salta</strong><br/>
+          <small>Bachelor in Informatics Engineering (2014–2019)</small>
+        </div>
       </div>
 
       <!-- CERTIFICATIONS -->
@@ -179,38 +253,38 @@
 
         <ul class="list es">
           <li><strong>Professional Certification in Quantum Computing</strong> – ITBA, 2025</li>
-          <li><strong>LFQ101: Fundamentals of Quantum Computing</strong> – The Linux Foundation, 2025</li>
+          <li><strong>LFQ101: Fundamentals of Quantum Computing</strong> – Linux Foundation, 2025</li>
           <li><strong>Go - The Complete Guide</strong> – Udemy, 2025</li>
           <li><strong>Design Patterns in C# and .NET</strong> – Udemy, 2025</li>
-          <li><strong>x86 Assembly Language Programming Masters Course</strong> – Udemy, 2021</li>
+          <li><strong>x86 Assembly Language Programming Master Course</strong> – Udemy, 2021</li>
           <li><strong>Microservices with ASP.NET Core, Docker and RabbitMQ</strong> – Udemy, 2021</li>
           <li><strong>LFS261: DevOps and SRE Fundamentals</strong> – Linux Foundation, 2020</li>
-          <li><strong>LFD201: Open Source Development, Git and Linux</strong> – Linux Foundation, 2020</li>
+          <li><strong>LFD201: Open Source Development, Git & Linux</strong> – Linux Foundation, 2020</li>
           <li><strong>LFS265: Software-Defined Networking Fundamentals</strong> – Linux Foundation, 2020</li>
           <li><strong>LFS211: Linux Networking and Administration</strong> – Linux Foundation, 2020</li>
           <li><strong>Complete Linux Bash Shell Scripting</strong> – Udemy, 2020</li>
           <li><strong>LFS201: Essentials of Linux System Administration</strong> – Linux Foundation, 2020</li>
           <li><strong>Master Vuejs from Scratch</strong> – Udemy, 2020</li>
-          <li><strong>M101N: MongoDB for .NET Developers</strong> – MongoDB, 2017</li>
-          <li><strong>M102: MongoDB for DBAs</strong> – MongoDB, 2017</li>
+          <li><strong>M101N: MongoDB for .NET Developers</strong> – MongoDB University, 2017</li>
+          <li><strong>M102: MongoDB for DBAs</strong> – MongoDB University, 2017</li>
         </ul>
 
         <ul class="list en">
           <li><strong>Professional Certification in Quantum Computing</strong> – ITBA, 2025</li>
-          <li><strong>LFQ101: Fundamentals of Quantum Computing</strong> – The Linux Foundation, 2025</li>
+          <li><strong>LFQ101: Fundamentals of Quantum Computing</strong> – Linux Foundation, 2025</li>
           <li><strong>Go - The Complete Guide</strong> – Udemy, 2025</li>
           <li><strong>Design Patterns in C# and .NET</strong> – Udemy, 2025</li>
-          <li><strong>x86 Assembly Language Programming Masters Course</strong> – Udemy, 2021</li>
+          <li><strong>x86 Assembly Language Programming Master Course</strong> – Udemy, 2021</li>
           <li><strong>Microservices with ASP.NET Core, Docker and RabbitMQ</strong> – Udemy, 2021</li>
           <li><strong>LFS261: DevOps and SRE Fundamentals</strong> – Linux Foundation, 2020</li>
-          <li><strong>LFD201: Open Source Development, Git and Linux</strong> – Linux Foundation, 2020</li>
+          <li><strong>LFD201: Introduction to Open Source Development, Git & Linux</strong> – Linux Foundation, 2020</li>
           <li><strong>LFS265: Software-Defined Networking Fundamentals</strong> – Linux Foundation, 2020</li>
           <li><strong>LFS211: Linux Networking and Administration</strong> – Linux Foundation, 2020</li>
           <li><strong>Complete Linux Bash Shell Scripting</strong> – Udemy, 2020</li>
           <li><strong>LFS201: Essentials of Linux System Administration</strong> – Linux Foundation, 2020</li>
           <li><strong>Master Vuejs from Scratch</strong> – Udemy, 2020</li>
-          <li><strong>M101N: MongoDB for .NET Developers</strong> – MongoDB, 2017</li>
-          <li><strong>M102: MongoDB for DBAs</strong> – MongoDB, 2017</li>
+          <li><strong>M101N: MongoDB for .NET Developers</strong> – MongoDB University, 2017</li>
+          <li><strong>M102: MongoDB for DBAs</strong> – MongoDB University, 2017</li>
         </ul>
       </div>
     </aside>
@@ -218,7 +292,7 @@
     <!-- MAIN CONTENT -->
     <main class="content">
 
-      <!-- PROFILE SUMMARY -->
+      <!-- SUMMARY -->
       <div class="section">
         <h3 class="es">Extracto Profesional</h3>
         <h3 class="en">Professional Summary</h3>
@@ -228,11 +302,11 @@
         </div>
 
         <div class="bl en">
-          I am a professional passionate about technology and innovation. I have contributed to major software projects across industries such as Hospitality, Agriculture, Finance, Healthcare, and Industry. I am currently specializing in quantum computing, integrating research with advanced software development.
+          I am a professional passionate about technology and innovation. I have worked on major projects across industries such as Hospitality, Agriculture, Finance, Healthcare and Industry. I currently specialize in quantum computing, combining research with advanced software development.
         </div>
       </div>
 
-      <!-- PROFESSIONAL EXPERIENCE -->
+      <!-- EXPERIENCE -->
       <div class="section">
         <h3 class="es">Experiencia Profesional</h3>
         <h3 class="en">Professional Experience</h3>
@@ -257,8 +331,8 @@
 
           <ul class="list en">
             <li>Fullstack application development and maintenance.</li>
-            <li>Implementation of scalable, high-performance solutions.</li>
-            <li>Active participation in architectural decisions.</li>
+            <li>Implementation of scalable and high-performance solutions.</li>
+            <li>Participation in architectural decision-making.</li>
           </ul>
         </div>
 
@@ -276,14 +350,14 @@
 
           <ul class="list es">
             <li>Desarrollo backend en .NET y microservicios.</li>
-            <li>Integración con servicios cloud y APIs.</li>
-            <li>Optimización de rendimiento.</li>
+            <li>Integración con servicios cloud y APIs externas.</li>
+            <li>Optimización de rendimiento y procesos críticos.</li>
           </ul>
 
           <ul class="list en">
             <li>Backend development with .NET and microservices.</li>
-            <li>Integration with cloud services and APIs.</li>
-            <li>Performance optimization.</li>
+            <li>Integration with external APIs and cloud services.</li>
+            <li>Performance optimization and critical process improvements.</li>
           </ul>
         </div>
       </div>
@@ -295,19 +369,19 @@
 
         <ul class="list es">
           <li>
-            <strong>Simulador de un cúbit (lab1compcuantica)</strong> – Simulador del estado cuántico de un qubit.
+            <strong>Simulador de un cúbit (lab1compcuantica)</strong> – Simulador teórico de un bit cuántico.
             (<a href="https://github.com/AaronSoria/lab1compcuantica" target="_blank">github.com/AaronSoria/lab1compcuantica</a>)
           </li>
           <li>
-            <strong>QuantumBeer</strong> – Experimento en un procesador cuántico real (QPU).
+            <strong>QuantumBeer</strong> – Experimento en un procesador cuántico real (QPU) para combinar ingredientes cerveceros.
             (<a href="https://github.com/AaronSoria/QuantumBeer" target="_blank">github.com/AaronSoria/QuantumBeer</a>)
           </li>
           <li>
-            <strong>PAnalizer</strong> – Herramienta forense para identificación de personas en imágenes.
+            <strong>PAnalizer</strong> – Herramienta forense para identificación de personas.
             (<a href="https://github.com/AaronSoria/PAnalizer" target="_blank">github.com/AaronSoria/PAnalizer</a>)
           </li>
           <li>
-            <strong>MercadoPagoCrossPlatform</strong> – SDK para integrar Mercado Pago en Xamarin.
+            <strong>MercadoPagoCrossPlatform</strong> – SDK para Mercado Pago en Xamarin.
             (<a href="https://github.com/AaronS28/MercadoPagoCrossPlatform" target="_blank">github.com/AaronS28/MercadoPagoCrossPlatform</a>)
           </li>
           <li>
@@ -315,7 +389,7 @@
             (<a href="https://github.com/AaronSoria/KuroCloudDicom" target="_blank">github.com/AaronSoria/KuroCloudDicom</a>)
           </li>
           <li>
-            <strong>Feriadito</strong> – API de feriados por país.
+            <strong>Feriadito</strong> – API de feriados.
             (<a href="https://docs.feriadito.com" target="_blank">docs.feriadito.com</a>)
           </li>
           <li>
@@ -326,7 +400,7 @@
 
         <ul class="list en">
           <li>
-            <strong>Quantum Bit Simulator (lab1compcuantica)</strong> – Simulation of a 1-qubit quantum state.
+            <strong>Quantum Bit Simulator (lab1compcuantica)</strong> – Theoretical 1-qubit simulator.
             (<a href="https://github.com/AaronSoria/lab1compcuantica" target="_blank">github.com/AaronSoria/lab1compcuantica</a>)
           </li>
           <li>
@@ -334,56 +408,55 @@
             (<a href="https://github.com/AaronSoria/QuantumBeer" target="_blank">github.com/AaronSoria/QuantumBeer</a>)
           </li>
           <li>
-            <strong>PAnalizer</strong> – Forensic tool for identifying people in images.
+            <strong>PAnalizer</strong> – Forensic tool for person identification.
             (<a href="https://github.com/AaronSoria/PAnalizer" target="_blank">github.com/AaronSoria/PAnalizer</a>)
           </li>
           <li>
-            <strong>MercadoPagoCrossPlatform</strong> – SDK for integrating Mercado Pago in Xamarin.
+            <strong>MercadoPagoCrossPlatform</strong> – SDK for Mercado Pago on Xamarin.
             (<a href="https://github.com/AaronS28/MercadoPagoCrossPlatform" target="_blank">github.com/AaronS28/MercadoPagoCrossPlatform</a>)
           </li>
           <li>
-            <strong>KuroCloudDicom</strong> – Cloud-based DICOM volume processing.
+            <strong>KuroCloudDicom</strong> – DICOM volume processor for cloud environments.
             (<a href="https://github.com/AaronSoria/KuroCloudDicom" target="_blank">github.com/AaronSoria/KuroCloudDicom</a>)
           </li>
           <li>
-            <strong>Feriadito</strong> – Holiday API.
+            <strong>Feriadito</strong> – Holiday API platform.
             (<a href="https://docs.feriadito.com" target="_blank">docs.feriadito.com</a>)
           </li>
           <li>
-            <strong>Draco Pet Healthcare</strong> – Pet health management platform.
+            <strong>Draco Pet Healthcare</strong> – Pet healthcare platform.
             (<a href="https://dracopethealthcare.com" target="_blank">dracopethealthcare.com</a>)
           </li>
         </ul>
       </div>
+
     </main>
   </div>
 </div>
 
-<!-- JS: Language Switcher -->
+<!-- JS -->
 <script>
 function setLang(lang){
   const es = document.querySelectorAll('.es');
   const en = document.querySelectorAll('.en');
 
   if(lang === 'es'){
-    es.forEach(e => e.style.display = '');
+    es.forEach(e => e.style.display = 'block');
     en.forEach(e => e.style.display = 'none');
   } else {
     es.forEach(e => e.style.display = 'none');
-    en.forEach(e => e.style.display = '');
+    en.forEach(e => e.style.display = 'block');
   }
 }
 
 document.getElementById('downloadBtn').addEventListener('click', () => {
   const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+  const doc = new jsPDF({ unit:'pt', format:'a4' });
 
   doc.html(document.querySelector('.card'), {
-    callback: function (pdf) {
-      pdf.save('CV-Aaron-Soria.pdf');
-    },
-    margin: 20,
-    autoPaging: 'text'
+    callback: pdf => pdf.save('CV-Aaron-Soria.pdf'),
+    margin:20,
+    autoPaging:'text'
   });
 });
 </script>
